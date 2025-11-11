@@ -1,0 +1,37 @@
+# .NET build files
+bin/
+obj/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Logs
+*.log
+
+# ASP.NET publish
+**/Properties/PublishProfiles/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# Coverage / test results
+*.coverage
+*.coveragexml
+TestResult.xml
+TestResults/
+
+# Temporary files
+*.tmp
+*.temp
+~$*
