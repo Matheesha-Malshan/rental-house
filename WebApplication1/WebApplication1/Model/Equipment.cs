@@ -23,7 +23,7 @@ public class Equipment
     [MaxLength(255)]
     public string OwnerEmail { get; set; } = "";
     [MaxLength(255)]
-    public string IsActive { get; set; } = "";
+    public Boolean IsActive { get; set; }
     public DateTime CreatedDate { get; set; }
     [MaxLength(255)] public string ImageUrl { get; set; } = "";
     

@@ -1,11 +1,7 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace WebApplication1.Dto;
 
-public class EquipmentDto
+public class EquipmentsDto
 {
-    
     public int EquipmentId { get; set; }
     public int UserId { get; set; }
     
@@ -18,8 +14,5 @@ public class EquipmentDto
     public string OwnerEmail { get; set; } = "";
     public Boolean IsActive { get; set; } 
     public DateTime CreatedDate { get; set; }
-
-    public IFormFile Image { get; set; }
-   
-
+    public string ImageUrl { get; set; } = "";
 }

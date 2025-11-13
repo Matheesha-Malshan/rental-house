@@ -1,32 +1,31 @@
 using WebApplication1.Dto;
+using WebApplication1.model;
 
 namespace WebApplication1.Service.States;
 
 public class PendingState:IRentalState
 {
-    public string StateName { get; set; }
+    public string StateName =>"Pending";
     
-    
-    
-    
-    public void Approve(RentalDto rental, EquipmentDto equipment)
+    public void Approve(Rental rental, Equipment equipment)
     {
-        throw new NotImplementedException();
+        rental.Status="Approved";
+        equipment.IsActive = false;
     }
 
-    public void Start(RentalDto rental)
+    public void Start(Rental rental)
     {
-        throw new NotImplementedException();
+        throw new InvalidOperationException("Cannot start a pending state");
     }
 
-    public void Complete(RentalDto rental, EquipmentDto equipment)
+    public void Complete(Rental rental, Equipment equipment)
     {
-        throw new NotImplementedException();
+        throw new InvalidOperationException("Cannot complete a pending state");
     }
 
-    public void Cancel(RentalDto rental, EquipmentDto equipment)
+    public void Cancel(Rental rental, Equipment equipment)
     {
-        throw new NotImplementedException();
+        rental.Status = "Cancelled";
     }
 
     public bool CanApprove()

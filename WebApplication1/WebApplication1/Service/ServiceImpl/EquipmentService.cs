@@ -1,11 +1,11 @@
 
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Dto;
 using WebApplication1.model;
 
 using WebApplication1.Service.File;
-using WebApplication1.Service.Stretagies;
 
 
 namespace WebApplication1.Service.ServiceImpl;
@@ -17,8 +17,7 @@ public class EquipmentService:IEquipmentService
     private readonly AppDb _appDb;
   
 
-    public EquipmentService(IFileService fileService,IMapper mapper,AppDb appDb
-        ,IStretagySelector stretagySelector)
+    public EquipmentService(IFileService fileService,IMapper mapper,AppDb appDb)
     {
         _fileService = fileService;
         _mapper = mapper;
@@ -36,10 +35,16 @@ public class EquipmentService:IEquipmentService
         {
             await _appDb.Equipments.AddAsync(equipments);
             await _appDb.SaveChangesAsync();
+            
             equipment.EquipmentId=equipments.EquipmentId;
             string filePath = GetFilePath(equipment);
+            
             equipments.ImageUrl = filePath;
+            
             await _fileService.FileSaveAsync(equipment,filePath);
+            
+            _appDb.Equipments.Update(equipments);
+            await _appDb.SaveChangesAsync();
             
             await transaction.CommitAsync();
             
@@ -61,6 +66,36 @@ public class EquipmentService:IEquipmentService
         return String.Empty;
         
     }
+
+    public async Task<List<EquipmentsDto>> GetAllEquipments()
+    {
+        var equipments = await _appDb.Equipments.ToListAsync();
+        return _mapper.Map<List<EquipmentsDto>>(equipments);
+    }
     
+    public async Task<List<EquipmentsDto>> GetAllEquipmentsByCategory(string category)
+    {
+        var equipments = await _appDb.Equipments.Where(u => u.Category == category).ToListAsync();
+        return _mapper.Map<List<EquipmentsDto>>(equipments);
+    }
+    
+    public async Task<List<string>> GetAllEquipmentsByLetter(string letters)
+    {
+        if (string.IsNullOrWhiteSpace(letters))
+        {
+            return new List<string>();
+        }
+        letters=letters.ToLower();
+
+        var eqipments = await _appDb.Equipments
+            .Where(e => e.Category.ToLower().StartsWith(letters))
+            .Select(e => e.Category)
+            .Distinct()
+            .ToListAsync();
+
+        return eqipments;
+    }
+
+
 
 }

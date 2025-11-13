@@ -1,11 +1,10 @@
-using WebApplication1.Dto;
 using WebApplication1.model;
 
 namespace WebApplication1.Service.States;
 
-public class ApprovedState:IRentalState
+public class CancelState:IRentalState
 {
-    public string StateName =>"Approved";
+    public string StateName =>"Cancelled";
     public void Approve(Rental rental, Equipment equipment)
     {
         throw new NotImplementedException();
@@ -13,19 +12,17 @@ public class ApprovedState:IRentalState
 
     public void Start(Rental rental)
     {
-        
-        rental.Status = "Active";
+        throw new NotImplementedException();
     }
 
     public void Complete(Rental rental, Equipment equipment)
     {
-        throw new InvalidOperationException("Cannot active rental");
+        throw new NotImplementedException();
     }
 
     public void Cancel(Rental rental, Equipment equipment)
     {
-        rental.Status = "Cancelled";
-        equipment.IsActive = true;
+        throw new NotImplementedException();
     }
 
     public bool CanApprove()
@@ -35,7 +32,7 @@ public class ApprovedState:IRentalState
 
     public bool CanStart()
     {
-        return true;
+        return false;
     }
 
     public bool CanComplete()
@@ -45,6 +42,6 @@ public class ApprovedState:IRentalState
 
     public bool CanCancel()
     {
-        return true;
+        return false;
     }
 }

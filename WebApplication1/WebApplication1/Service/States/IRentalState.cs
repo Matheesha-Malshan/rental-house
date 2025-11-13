@@ -1,15 +1,16 @@
 using WebApplication1.Dto;
+using WebApplication1.model;
 
 namespace WebApplication1.Service.States;
 
 public interface IRentalState
 {
-    string StateName { get; set; }
+    string StateName{ get; }
     
-    void Approve(RentalDto rental,EquipmentDto equipment);
-    void Start(RentalDto rental);
-    void Complete(RentalDto rental,EquipmentDto equipment);
-    void Cancel(RentalDto rental,EquipmentDto equipment);
+    void Approve(Rental rental,Equipment equipment);
+    void Start(Rental rental);
+    void Complete(Rental rental,Equipment equipment);
+    void Cancel(Rental rental,Equipment equipment);
     
     bool CanApprove();
     bool CanStart();

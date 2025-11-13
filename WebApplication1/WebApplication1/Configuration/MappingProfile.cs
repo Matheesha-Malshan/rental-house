@@ -11,6 +11,14 @@ public class MappingProfile:Profile
         CreateMap<EquipmentDto, Equipment>()
             .ForMember(dest => dest.ImageUrl, opt => opt.Ignore())
             .ForSourceMember(src => src.Image, opt => opt.DoNotValidate());
+        
+        CreateMap<RentalDto, Rental>();
+        
+        CreateMap<Rental, RentalDto>();
+
+        CreateMap<Equipment, EquipmentsDto>();
+
+
 
     }
 

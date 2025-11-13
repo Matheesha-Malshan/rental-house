@@ -1,9 +1,12 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.model;
 
 public class Rental
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int RentalId { get; set; }
     
     [ForeignKey(nameof(Equipment))]
