@@ -88,12 +88,18 @@ public class EquipmentService:IEquipmentService
         letters=letters.ToLower();
 
         var eqipments = await _appDb.Equipments
-            .Where(e => e.Category.ToLower().StartsWith(letters))
-            .Select(e => e.Category)
+            .Where(e => e.Title.ToLower().StartsWith(letters))
+            .Select(e => e.Title)
             .Distinct()
             .ToListAsync();
 
         return eqipments;
+    }
+    
+    public async Task<List<EquipmentsDto>> GetAllEquipmentsByTitle(string titles)
+    {
+        var equipments = await _appDb.Equipments.Where(u => u.Title == titles).ToListAsync();
+        return _mapper.Map<List<EquipmentsDto>>(equipments);
     }
 
 

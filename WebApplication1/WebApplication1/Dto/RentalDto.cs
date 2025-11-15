@@ -4,6 +4,7 @@ public class RentalDto
 {
     public int RentalId { get; set; }
     public int EquipmentId { get; set; }
+    public string Title { get; set; } = "";
     public string RenterName { get; set; } = "";
     public string RenterPhone{get;set;} = "";
     public string RenterEmail{get;set;} = "";

@@ -4,7 +4,7 @@ namespace WebApplication1.Service.File;
 
 public class LocalFileService:IFileService
 {
-    private string _path="../wwwroot";
+    private string _path="/home/matheesha/Documents/rental/rental-house/WebApplication1/WebApplication1/wwwroot";
     
     public string CreateFile(EquipmentDto equipment)
     {

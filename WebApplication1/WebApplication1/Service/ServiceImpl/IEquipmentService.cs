@@ -11,4 +11,6 @@ public interface IEquipmentService
 
     Task<List<string>> GetAllEquipmentsByLetter(string letters);
 
+    Task<List<EquipmentsDto>> GetAllEquipmentsByTitle(string titles);
+
 }

@@ -11,6 +11,19 @@ using WebApplication1.Service.Stretagies;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddScoped<IEquipmentService, EquipmentService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -27,7 +40,15 @@ builder.Services.AddScoped<IRentalService, RentalService>();
 builder.Services.AddSingleton<IRentalSubject, RentalSubject>();
 builder.Services.AddSingleton<IRentalObserver, RenterObserver>();
 
+
+
 var app = builder.Build();
+
+app.UseCors("AllowAll");
+
+app.MapControllers();
+
+
 
 app.Services.GetRequiredService<IRentalObserver>();
 
@@ -112,5 +133,12 @@ app.MapGet("/get-all-rentals-by-letters/{letter}",  (string letter,IEquipmentSer
     return equipmentService.GetAllEquipmentsByLetter(letter);
 
 });
+
+app.MapGet("/get-all-rentals-by-title/{title}",  (string title,IEquipmentService equipmentService) =>
+{
+    return equipmentService.GetAllEquipmentsByTitle(title);
+
+});
+
 
 app.Run();

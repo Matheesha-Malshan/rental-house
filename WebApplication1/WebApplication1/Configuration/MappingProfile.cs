@@ -14,7 +14,9 @@ public class MappingProfile:Profile
         
         CreateMap<RentalDto, Rental>();
         
-        CreateMap<Rental, RentalDto>();
+        CreateMap<Rental, RentalDto>()
+            .ForMember(dest => dest.Title,
+                opt => opt.MapFrom(src => src.Equipment.Title));;
 
         CreateMap<Equipment, EquipmentsDto>();
 

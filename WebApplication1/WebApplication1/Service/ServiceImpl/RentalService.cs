@@ -164,7 +164,7 @@ public class RentalService:IRentalService
             .Include(r => r.Equipment)
             .Where(r => r.Equipment.UserId == userId)
             .ToListAsync();
-        
+
         return _mapper.Map<List<RentalDto>>(rental);
 
     }
@@ -177,6 +177,8 @@ public class RentalService:IRentalService
 
 
     }
+    
+   
 
 
 }
