@@ -1,0 +1,100 @@
+/* MAIN CARD CONTAINER */
+.card-container {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  max-width: 350px;
+  margin: auto;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+}
+
+/* IMAGE SECTION */
+.card-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DETAILS SECTION */
+.card-details {
+  padding: 16px;
+  text-align: left;
+}
+
+/* CATEGORY BADGE */
+.card-category {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Title */
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+  color: #333;
+}
+
+/* Price */
+.card-price {
+  color: #059669;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Owner Info */
+.card-owner {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Availability */
+.card-availability {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 12px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.card-availability.available {
+  background-color: #10b981; /* Green */
+}
+
+.card-availability.not-available {
+  background-color: #ef4444; /* Red */
+}
+
+/* Button */
+.card-button {
+  width: 100%;
+  margin-top: 16px;
+  background: #2563eb;
+  color: white;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.card-button:hover {
+  background: #1e40af;
+}

@@ -1,0 +1,128 @@
+:root{
+  /* Blue color palette */
+  --blue-900: #0b3d91;
+  --blue-700: #1360d8;
+  --blue-500: #2a8cf7;
+  --blue-400: #5aa6ff;
+  --blue-200: #cfe9ff;
+
+  --text-dark: #1f2937;
+  --muted: #6b7280;
+}
+
+/* Card container */
+.rental-card {
+  background: #fff;
+  padding: 18px;
+  margin: 14px 0;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(9, 30, 66, 0.08);
+  transition: transform .18s ease, box-shadow .18s ease;
+  border: 1px solid rgba(42,140,247,0.06);
+}
+
+.rental-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(9, 30, 66, 0.12);
+}
+
+/* Header / title */
+.rental-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blue-900);
+  margin-bottom: 6px;
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+/* Use blue palette for pending and unify other statuses to distinct tones */
+.status-pending { background: linear-gradient(90deg,var(--blue-700),var(--blue-500)); }
+.status-approved { background: linear-gradient(90deg,var(--blue-500),var(--blue-400)); }
+.status-active { background: linear-gradient(90deg,var(--blue-700),var(--blue-500)); }
+.status-complete { background: linear-gradient(90deg,#4b5563,#6b7280); }
+.status-rejected { background: linear-gradient(90deg,#d64545,#c43a3a); }
+
+/* Detail text */
+.rental-card p {
+  margin: 6px 0;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.rental-card p small, .rental-card .muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Price styling — blue accent per your request */
+.price {
+  color: var(--blue-900);
+  font-weight: 800;
+  font-size: 18px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, rgba(42,140,247,0.06), rgba(42,140,247,0.02));
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Buttons — force blue palette for all buttons, keep bootstrap .btn sizing */
+.btn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .1s ease;
+  box-shadow: 0 2px 8px rgba(9,30,66,0.06);
+}
+
+/* Primary blue look (used for Approve/Active/Mark as Complete) */
+.btn.btn-primary,
+.btn.btn-success { /* unify success -> blue too */
+  background: linear-gradient(90deg, var(--blue-700), var(--blue-500));
+  color: #fff;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-success:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(42,140,247,0.18);
+}
+
+/* Danger-like buttons but with blue outline / light fill (so action buttons remain visible but blue theme) */
+.btn.btn-danger {
+  background: transparent;
+  color: var(--blue-900);
+  border: 1.5px solid rgba(42,140,247,0.18);
+}
+
+.btn.btn-danger:hover{
+  background: rgba(42,140,247,0.06);
+  transform: translateY(-2px);
+}
+
+/* Group spacing */
+.btn-group {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px){
+  .rental-title { font-size: 18px; }
+  .price { font-size: 16px; }
+  .btn { padding: 8px 10px; font-size: 14px; }
+}
